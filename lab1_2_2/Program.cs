@@ -28,9 +28,9 @@ namespace lab1_2_2
                 this.a = a;
             }
 
-            public TETriangle(TETriangle previousTETriangle)
+            public TETriangle(TETriangle previous)
             {
-                a = previousTETriangle.a;
+                a = previous.a;
             }
 
             public override string ToString()
@@ -72,6 +72,29 @@ namespace lab1_2_2
             }
         }
 
+        class TETriangleF : TETriangle
+        {
+            public TETriangleF() : base() { }
+
+            public TETriangleF(double a) : base(a) { }
+
+            public TETriangleF(TETriangleF previous) : base(previous) { }
+
+            public override bool Equals(object obj)
+            {
+                if (obj is TETriangleF other)
+                {
+                    return this.a == other.a;
+                }
+                return false;
+            }
+
+            public override int GetHashCode()
+            {
+                return (int)a;
+            }
+        }
+
         class TEPiramid : TETriangle
         {
             private double h_;
@@ -95,9 +118,9 @@ namespace lab1_2_2
                 this.h = h;
             }
 
-            public TEPiramid(TEPiramid previousTEPiramid) : base(previousTEPiramid)
+            public TEPiramid(TEPiramid previous) : base(previous)
             {
-                h = previousTEPiramid.h;
+                h = previous.h;
             }
 
             public override string ToString()
@@ -153,6 +176,13 @@ namespace lab1_2_2
             teTriangles.Add(first);
             TETriangle second = new TETriangle(5);
             Console.WriteLine(teTriangles.Contains(second));
+            TETriangleF firstF = new TETriangleF(5);
+            HashSet<TETriangleF> teTrianglesF = new HashSet<TETriangleF>();
+            teTrianglesF.Add(firstF);
+            TETriangleF secondF = new TETriangleF(5);
+            Console.WriteLine(teTrianglesF.Contains(secondF));
+
+
             Console.ReadKey();
         }
     }
