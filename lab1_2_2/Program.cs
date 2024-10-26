@@ -171,18 +171,25 @@ namespace lab1_2_2
 
         public static void Main()
         {
-            TETriangle first = new TETriangle(5);
             HashSet<TETriangle> teTriangles = new HashSet<TETriangle>();
+            TETriangle first = new TETriangle(5);
             teTriangles.Add(first);
             TETriangle second = new TETriangle(5);
             Console.WriteLine(teTriangles.Contains(second));
-            TETriangleF firstF = new TETriangleF(5);
+
             HashSet<TETriangleF> teTrianglesF = new HashSet<TETriangleF>();
+            TETriangleF firstF = new TETriangleF(5);
             teTrianglesF.Add(firstF);
             TETriangleF secondF = new TETriangleF(5);
             Console.WriteLine(teTrianglesF.Contains(secondF));
 
-
+            HashSet<TEPiramid> tePiramids = new HashSet<TEPiramid>();
+            tePiramids.Add(new TEPiramid(2, 4));
+            tePiramids.Add(new TEPiramid(2, 1));
+            tePiramids.Add(new TEPiramid(2, 6));
+            tePiramids.Add(new TEPiramid(2, 3));
+            tePiramids.Add(new TEPiramid(2, 10));
+            Console.WriteLine(tePiramids.Count());
             Console.ReadKey();
         }
     }
