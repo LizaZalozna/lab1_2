@@ -91,11 +91,11 @@ namespace lab1_2_2
 
             public override int GetHashCode()
             {
-                return (int)a;
+                return (int)a*3;
             }
         }
 
-        class TEPiramid : TETriangle
+        class TEPiramid : TETriangleF
         {
             private double h_;
             public double h
@@ -169,6 +169,30 @@ namespace lab1_2_2
             }
         }
 
+        class TEPiramidF : TEPiramid
+        {
+            public TEPiramidF() : base() { }
+
+            public TEPiramidF(double a, double h) : base(a,h) { }
+
+            public TEPiramidF(TEPiramidF previous) : base(previous) { }
+
+            public override bool Equals(object obj)
+            {
+                if (obj is TEPiramidF other)
+                {
+                    return this.a == other.a && this.h == other.h;
+                }
+                return false;
+            }
+
+            public override int GetHashCode()
+            {
+                return (int)(a * 3 + h * 2) ;
+            }
+        }
+    
+
         public static void Main()
         {
             HashSet<TETriangle> teTriangles = new HashSet<TETriangle>();
@@ -190,6 +214,14 @@ namespace lab1_2_2
             tePiramids.Add(new TEPiramid(2, 3));
             tePiramids.Add(new TEPiramid(2, 10));
             Console.WriteLine(tePiramids.Count());
+
+            HashSet<TEPiramidF> tePiramidsF = new HashSet<TEPiramidF>();
+            tePiramidsF.Add(new TEPiramidF(2, 4));
+            tePiramidsF.Add(new TEPiramidF(2, 1));
+            tePiramidsF.Add(new TEPiramidF(2, 6));
+            tePiramidsF.Add(new TEPiramidF(2, 3));
+            tePiramidsF.Add(new TEPiramidF(2, 10));
+            Console.WriteLine(tePiramidsF.Count());
             Console.ReadKey();
         }
     }
