@@ -102,7 +102,7 @@ namespace lab1_2_2
 
             public override string ToString()
             {
-                return $"Правильна трикутна піраміда із ребрами основи {a}, висотою {h}, периметром основи {Perimeter()},\nплощею основи {Square()}, площа повної поверхні {PSquare()} і обє'мом {Volume()}.";
+                return $"Правильна трикутна піраміда із ребрами основи {a}, висотою {h}, периметром основи {Perimeter()},\nплощею основи {base.Square()}, площа повної поверхні {Square()} і обє'мом {Volume()}.";
             }
 
             public static TEPiramid Input()
@@ -148,7 +148,11 @@ namespace lab1_2_2
 
         public static void Main()
         {
-
+            TETriangle first = new TETriangle(5);
+            HashSet<TETriangle> teTriangles = new HashSet<TETriangle>();
+            teTriangles.Add(first);
+            TETriangle second = new TETriangle(5);
+            Console.WriteLine(teTriangles.Contains(second));
             Console.ReadKey();
         }
     }
