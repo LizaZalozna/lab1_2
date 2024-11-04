@@ -91,7 +91,7 @@ namespace lab1_2_2
 
             public override int GetHashCode()
             {
-                return (int)a*3;
+                return 3 * a.GetHashCode();
             }
         }
 
@@ -188,7 +188,7 @@ namespace lab1_2_2
 
             public override int GetHashCode()
             {
-                return (int)(a * 3 + h * 2) ;
+                return a.GetHashCode() * 3 + h.GetHashCode() * 2 ;
             }
         }
     
